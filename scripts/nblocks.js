@@ -64,7 +64,7 @@ function parseParams(params) {
  * @param context The context object
  */
 export function renderNanoBlocks(parent = document.body, context = undefined) {
-  const regex = /(.*){([^}]+)}(.*)/g;
+  const regex = /(.*){{([^}]+)}}(.*)/g;
   findTextNodes(parent).forEach((textNode) => {
     const text = textNode.textContent.trim();
     const matches = text.matchAll(regex);
