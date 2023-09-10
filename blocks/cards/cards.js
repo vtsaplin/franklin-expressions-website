@@ -1,4 +1,5 @@
 import { createOptimizedPicture } from '../../scripts/lib-franklin.js';
+import { renderNanoBlocks } from '../../scripts/nblocks.js';
 
 export default function decorate(block) {
   /* change to ul, li */
@@ -9,6 +10,7 @@ export default function decorate(block) {
     [...li.children].forEach((div) => {
       if (div.children.length === 1 && div.querySelector('picture')) div.className = 'cards-card-image';
       else div.className = 'cards-card-body';
+      renderNanoBlocks(div);
     });
     ul.append(li);
   });
