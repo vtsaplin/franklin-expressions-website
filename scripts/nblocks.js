@@ -64,19 +64,24 @@ function parseParams(params) {
  * @param context The context object
  */
 export function renderNanoBlocks(parent = document.body, context = undefined) {
-  const regex = /{([^}]+)}/g;
-  findTextNodes(parent).forEach((node) => {
-    const text = node.textContent.trim();
-    const matches = text.match(regex);
+  const regex = /(.*){([^}]+)}(.*)/g;
+  findTextNodes(parent).forEach((textNode) => {
+    const text = textNode.textContent.trim();
+    const matches = text.matchAll(regex);
     if (matches) {
-      matches.forEach((match) => {
-        const [name, ...params] = parseParams(match.slice(1, -1));
+      Array.from(matches).forEach((match) => {
+        const [before, body, after] = match.slice(1);
+        const [name, ...params] = parseParams(body);
         const renderer = nblocks.get(name.toLowerCase());
         if (renderer) {
-          const element = renderer(parent, ...(context ? [context] : []), ...params);
-          element.classList.add('nanoblock');
-          const oldElement = node.parentNode;
-          oldElement.parentNode.replaceChild(element, oldElement);
+          const element = renderer({ parent, context, params });
+          element.classList.add('nano-block', name);
+          textNode.textContent = before;
+          textNode.after(element);
+          if (after) {
+            const afterTextNode = document.createTextNode(after);
+            element.after(afterTextNode);
+          }
         }
       });
     }
