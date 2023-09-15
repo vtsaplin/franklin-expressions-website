@@ -1,5 +1,5 @@
 import { createOptimizedPicture } from '../../scripts/lib-franklin.js';
-import { renderNanoBlocks } from '../../scripts/nblocks.js';
+import { renderNanoBlocks } from '../../scripts/nanoblocks.js';
 
 export default function decorate(block) {
   /* change to ul, li */
