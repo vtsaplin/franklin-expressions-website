@@ -12,7 +12,8 @@ import {
   loadBlocks,
   loadCSS,
 } from './lib-franklin.js';
-import './stocks.js';
+
+import './product-nanoblocks.js';
 
 const LCP_BLOCKS = []; // add your LCP blocks to the list
 
