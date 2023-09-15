@@ -1,7 +1,7 @@
-import { createNanoBlock } from './nblocks.js';
+import { createNanoBlock } from './nanoblocks.js';
 
-createNanoBlock('ticker', ({ params: [ticker] }) => {
+createNanoBlock('ticker', ({ args }) => {
   const el = document.createElement('span');
-  el.innerText = `${560} ${ticker}`;
+  el.innerText = `${560} ${args}`;
   return el;
 });
