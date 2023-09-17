@@ -13,7 +13,7 @@ import {
   loadCSS,
 } from './lib-franklin.js';
 
-import './product-nanoblocks.js';
+import './product-placeholders.js';
 
 const LCP_BLOCKS = []; // add your LCP blocks to the list
 

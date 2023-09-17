@@ -2,8 +2,8 @@
 Your project's description...
 
 ## Environments
-- Preview: https://main--franklin-nanoblocks-demo--vtsaplin.hlx.page/
-- Live: https://main--franklin-nanoblocks-demo--vtsaplin.hlx.live/
+- Preview: https://main--franklin-placeholders-website--vtsaplin.hlx.page/
+- Live: https://main--franklin-placeholders-website--vtsaplin.hlx.live/
 
 ## Installation
 

@@ -1,4 +1,4 @@
-import { createNanoBlock } from './nanoblocks.js';
+import { createPlaceholder } from './placeholders.js';
 
 async function fetchProductDetails() {
   return new Promise((resolve) => {
@@ -7,7 +7,7 @@ async function fetchProductDetails() {
   });
 }
 
-createNanoBlock('price', ({ args }) => {
+createPlaceholder('price', ({ args }) => {
   // get the sku and plan from the args
   const [sku, plan] = args.split(',');
 
@@ -25,7 +25,7 @@ createNanoBlock('price', ({ args }) => {
   return el;
 });
 
-createNanoBlock('cta', ({ parent, args }) => {
+createPlaceholder('cta', ({ parent, args }) => {
   // get the first sibling that is a link
   const a = parent.nextElementSibling.querySelector('a');
   if (a === null) return;
