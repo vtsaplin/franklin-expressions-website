@@ -1,13 +1,15 @@
-import { createPlaceholder } from './placeholders.js';
+import { createExpression } from './expressions.js';
 
-async function fetchProductDetails() {
+const PRODUCT_PRICES = [ 1.95, 2.95, 3.95, 4.95, 5.95 ];
+
+async function fetchProductPrice() {
   return new Promise((resolve) => {
-    const price = Math.floor(Math.random() * (955 - 195 + 1) + 195) / 100;
-    setTimeout(() => resolve(price), 300);
+    const index = Math.floor(Math.random() * PRODUCT_PRICES.length);
+    setTimeout(() => resolve(PRODUCT_PRICES[index]), 300);
   });
 }
 
-createPlaceholder('price', ({ args }) => {
+createExpression('price', ({ args }) => {
   // get the sku and plan from the args
   const [sku, plan] = args.split(',');
 
@@ -15,7 +17,7 @@ createPlaceholder('price', ({ args }) => {
   const el = document.createElement('span');
 
   // fetch the price
-  fetchProductDetails(sku, plan).then((price) => {
+  fetchProductPrice(sku, plan).then((price) => {
     el.innerText = `$${price}`;
   });
 
@@ -25,7 +27,7 @@ createPlaceholder('price', ({ args }) => {
   return el;
 });
 
-createPlaceholder('cta', ({ parent, args }) => {
+createExpression('cta', ({ parent, args }) => {
   // get the first sibling that is a link
   const a = parent.nextElementSibling.querySelector('a');
   if (a === null) return;
